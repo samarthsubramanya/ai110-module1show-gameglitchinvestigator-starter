@@ -25,13 +25,33 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose. <br/>
+   The main purpose of the game is guessing. A random number is picked by the system with preset attempts based on difficulty and the player has to guess the number correctly within the said attempts. To assist the player, the game will provide hints on each guess indicating whether the secret chose number is higher than or lower than the player's current guess. The game terminates when player correctly guesses the number of all attempts are exhausted. <br/>
+   
+- [x] Detail which bugs you found.
+    The main bugs observed in the game which hampered the gameplay were:
+    - The hints were inverted. If the chose secret number was 50 and user guessed 40, the hint would say "go Lower" instead of "go Higher". Similary, if player guess was 60, the hint would say "go Higher" instead of "go Lower". This made it impossible for the player to win the game as they were misled by the hints.
+    - The New Game button did not perform any action. As the on click of the button did not reset the state to default, the game did not clear previous state and it was stuck in the same Completed screen. Hence the game could not be reset/restarted unless the page was reloaded.
+    - When the page was loaded freshly after starting from the command line, the attempts was 1 already. This consumed one attempt from the precious limited attempts available to the user. This was due to the fact that attempts was set to 1 on state load. 
+    - More bugs have been mentioned in reflections.md.
+- [x] Explain what fixes you applied.
+   For the above bugs, I applied the following fixes:
+   - For the inverted hint, The guess was parsed as int . Then the comparison logic was fixed so that accurate guess would happen. The tests file was also updated accordingly as the function was returning a tuple of values and test was comparing only a single value.
+   - For the New Game button, the session state, attempts and secret number were reset to default values to indicate that the session is restarted, i.e game is reseta and all state be initialized freshly. This allowed the game to be restarted without having to reload the page.
+   - For the attempts issue, I set the attempts to 0 on state load instead of 1. This ensured that the user starts with 0 attempts and the first guess would consume the first attempt, which is the expected behavior.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [x] [Insert a screenshot of your fixed, winning game here]
+   I have attached screenshots of 3 different scenarios.
+
+|Scenario   | Image  |
+|-----------|--------|
+| Guess > Secret | ![Go Low](/images/ss_go_low.png)  |
+| Guess < Secret | ![Go High](/images/ss_go_high.png)  |
+| Guess = Secret(Win) | ![ Win ](/images/ss_win.png)  |
+
+   
 
 ## 🚀 Stretch Features
 

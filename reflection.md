@@ -13,8 +13,8 @@ The game launched without any hiccups and had a basic interface. It was a number
   1. The suggestions/hints were inverted. While the guess was lower than secret number, instead of showing HIGHER it showed LOWER and vice versa.
   2. The New Game button was not working. Although the secret number refreshed to a different one, the UI did not update and I was not able to input any new number into the input box.
   3. I also observed that the attempts remaining was going negative (below 0) on this occassion when trying to switch difficulty level.
-  4. Also, when trying to switch the difficulty level, the secret number was not changing even though the range and number of attempts were changing.
-  5. Easy (1 to 20), Normal (1 to 100) and Hard (1 to 50) was the preset. But considering the level, it would be better to have Normal as (1 to 50) and Hard (1 to 100) as it would be more difficult to guess.
+  4. Also, when trying to switch the difficulty level, the secret number was not changing even though the range and number of attempts were changing. The welcome hint text "Guess a number between" also does not change.
+  5. Easy (1 to 20), Normal (1 to 100) and Hard (1 to 50) was the preset. But considering the level, it would be better to have Normal as (1 to 50) and Hard (1 to 100) as it would be more difficult to guess. (Did not fix this as though maybe as expected)
   6. Enter button on submitting the guess in input box had no effect. I had to click on the "Submit Guess" button to submit the guess. It would be better if the Enter button also worked for submitting the guess as it would be more intuitive and user friendly.
   7. Initially attempt is 1 instead of 0.
 
@@ -47,12 +47,15 @@ The game launched without any hiccups and had a basic interface. It was a number
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+  Streamlit is a popular Python Framework for development of Interactive web applications. It is used to quickly setup and deploy applications with minimal code managing the HTTP server and more on actual business logic. "reruns" refers to the ability of Streamlit to automatically re-run the python code of the application whenever a change occurs in the state, i.e when then input is triggered or an event occurrs. This provided for a dynamic, interactive experience with the downside that state is cleared. To better explain state, understand you are travelling from point A to point B. You stopped at point C for taking rest. Realistically, you remember that you stopped at point C and you need to take a route to point B from there. You also will have to cover less distance than from point A originally as you have covered some distance. Now, if you do not have that memory. You forget where you are going or you remember you have to go to point B but don't know where you are. Then you will either be in a confused, corrupted state or you will have to first go to point A and then start your trip again. The memory is similar to state. A state is like a snapshot of few memory items in your application which remembers your progress so the next time you visit it (accidently or intentionally) it can pick up from where you left off instead of starting from the beginning. This is especially important in Streamlit as it re-runs the code on every interaction, so without session state, you would lose all your progress and data on every interaction.
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
+  One habit I want to carry forward is to continue writing good tests and emphasize on test-driven development. If the test case can cover the edge cases and the main business logic, the actual application can be implemented efficiently from scratch keeping all these in mind and would no require modifications at a later point when edge cases are suddenly discovered. This would save a lot of time and effort in the long run and would also lead to better code quality and more robust applications.
 - What is one thing you would do differently next time you work with AI on a coding task?
+  I would improve my prompt engineering skills and explain the context better as well as the issues, so that the AI can provide more accurate and relevant suggestions. I would also maybe use different Chat sessions so that context is isolated and only relevant segregated suggestions are provided.
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+  AI generated code could be a good starting point for applications. It will not be accurate and correct always. It is essential to have a knowledge of the Software Engineering to understand the code underneath so we can determine whether the code actually does what it is supposed to and there is no side effects. It will also let us not trust AI blindly. We should use it as a toll to enhance our productivity, but scrutinize and evaluate the results and not entrust everything.
